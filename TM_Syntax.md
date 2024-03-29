@@ -7,8 +7,6 @@ The simulator class instantiates an object containing the rules, the states and 
 and can run and depict the run. To ease programming, the parser class creates the Turing Machine
 and writes its program from a description given in the following syntax.
 
-
-
 The file is a sequence of stanzas. Each stanza starts with a head line starting 
 in the first column. The first word in the head line as a keyword indicating 
 the type of stanza. A stanza may have continuation lines, each are indented.
@@ -57,7 +55,10 @@ The action is either l, r or n, meaning move left, move right, or no move.
 If the code for the action captialized (L, R, or N) the machine configuration is printed after the transition.
 
 The colon (:) is a wildcard. Its use among the k read symbols matches any symbol. 
-Four use cases are allowed, and are listed in the priority the case is applied,
+When the wildcard appearing as a write symbol, it is set equal to the read symbol, on the corresponding tape.
+Priority within one of the four classes is right to left.
+
+The use of the wildcard for read follows these rules, listed in the priorty that the case is applied,
 
     No wildcards. An exact match of the k type symbols has top precedence.
     One wildcard. An exact match for all but one symbol is tried if 
@@ -66,17 +67,14 @@ Four use cases are allowed, and are listed in the priority the case is applied,
        is tried next.
     All wildcards. The default matches anything.
 
-When the wildcard appearing as a write symbol, it is set equal to the read symbol, on the corresponding tape.
-Priority within one of the four classes is right to left.
-
 A missing transition halts with reject. This and the wildcard are convenience features to
 shorten the TM programs.
 
 If the machine rejects, it can be queried for the cause of the reject,
 
-    Reject becaues halted in a reject state.
+    Reject because halted in a reject state.
     Reject because of a missing transition.
-    Reject bedcause the computation terminated for excessive computation steps.
+    Reject because the computation terminated for excessive computation steps.
 
 The method is_exception classes the first two rejects as correct computations, and the last as an exception.
 
