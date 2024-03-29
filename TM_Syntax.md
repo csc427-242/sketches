@@ -19,7 +19,7 @@ I tend to use the ampersand, &amp; as a pound sign substitute.
 The grammar:
 
 <pre>
-  M -> (Stanza [emptyline])*
+  M -> (Stanza)(\n Stanza)*
   Stanza -> StartStanza | TapesStanza | AcceptStanza | RejectStanza | StateStanza
   StartStanza -> "start:" Ident
   TapesStanza -> "tapes:" number
@@ -80,3 +80,4 @@ The method is_exception classes the first two rejects as correct computations, a
 
 See these [examples](https://github.com/csc427-242/sketches/blob/main/turing_machine_sketch.ipynb).
 
+(Last update: 29 March 2024)
